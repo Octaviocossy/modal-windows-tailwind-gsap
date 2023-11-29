@@ -1,7 +1,6 @@
-import { createContext, useContext, useState } from "react";
-
-import { ELocalStorage, IModal, ITab } from "@/models";
 import { getLocalStorage, updateIdOnLocalStorage } from "@/utilities";
+import { createContext, useContext, useState } from "react";
+import { ELocalStorage, IModal, ITab } from "@/models";
 
 interface State {
   modal: IModal | null;

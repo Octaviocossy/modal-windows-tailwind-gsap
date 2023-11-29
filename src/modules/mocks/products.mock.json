@@ -1,0 +1,99 @@
+[
+  {
+    "id": 1,
+    "name": "Product A",
+    "description": "Description A",
+    "price": 20.0,
+    "operator_name": "John Smith",
+    "operator_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Product B",
+    "description": "Description B",
+    "price": 30.0,
+    "operator_name": "John Smith",
+    "operator_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Product C",
+    "description": "Description C",
+    "price": 25.0,
+    "operator_name": "John Smith",
+    "operator_id": 1
+  },
+
+  {
+    "id": 4,
+    "name": "Product D",
+    "description": "Description D",
+    "price": 15.0,
+    "operator_name": "Mary Gomez",
+    "operator_id": 2
+  },
+  {
+    "id": 5,
+    "name": "Product E",
+    "description": "Description E",
+    "price": 40.0,
+    "operator_name": "Mary Gomez",
+    "operator_id": 2
+  },
+  {
+    "id": 6,
+    "name": "Product F",
+    "description": "Description F",
+    "price": 18.0,
+    "operator_name": "Mary Gomez",
+    "operator_id": 2
+  },
+  {
+    "id": 7,
+    "name": "Product G",
+    "description": "Description G",
+    "price": 22.0,
+    "operator_name": "Carlos Rodriguez",
+    "operator_id": 3
+  },
+  {
+    "id": 8,
+    "name": "Product H",
+    "description": "Description H",
+    "price": 35.0,
+    "operator_name": "Carlos Rodriguez",
+    "operator_id": 3
+  },
+  {
+    "id": 9,
+    "name": "Product I",
+    "description": "Description I",
+    "price": 28.0,
+    "operator_name": "Carlos Rodriguez",
+    "operator_id": 3
+  },
+  {
+    "id": 10,
+    "name": "Product J",
+    "description": "Description J",
+    "price": 19.0,
+    "operator_name": "Anna Lopez",
+    "operator_id": 4
+  },
+  {
+    "id": 11,
+    "name": "Product K",
+    "description": "Description K",
+    "price": 32.0,
+    "operator_name": "Anna Lopez",
+    "operator_id": 4
+  },
+  {
+    "id": 12,
+    "name": "Product L",
+    "description": "Description L",
+    "price": 24.0,
+    "operator_name": "Anna Lopez",
+    "operator_id": 4
+  }
+]
