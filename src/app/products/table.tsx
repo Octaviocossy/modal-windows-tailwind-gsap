@@ -1,8 +1,15 @@
 "use client";
 
-import { useTable } from "@/hooks";
-import { IProduct } from "@/models";
 import { ColumnDef } from "@tanstack/react-table";
+import { IProduct } from "@/models";
+import { useTable } from "@/hooks";
+import { api } from "@/services";
+
+const handleCreateProductModal = async (id: IProduct["id"]) => {
+  const { value } = await api.get(`/api/products/${id}`);
+
+  console.log(value);
+};
 
 const COLUMNS: ColumnDef<IProduct>[] = [
   {
@@ -27,7 +34,7 @@ const COLUMNS: ColumnDef<IProduct>[] = [
 
       return (
         <button
-          onClick={() => console.log(product.id)}
+          onClick={() => handleCreateProductModal(product.id)}
           className="p-2 px-4 text-blue-700 hover:bg-blue-500/20 transition-colors bg-blue-500/10 rounded-lg"
         >
           Details
