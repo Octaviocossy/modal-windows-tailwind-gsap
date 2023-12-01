@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "John Smith",
+    "email": "john@example.com",
+    "location": "City A",
+    "mobile": "1234567890"
+  },
+  {
+    "id": 2,
+    "name": "Mary Gomez",
+    "email": "mary@example.com",
+    "location": "City B",
+    "mobile": "9876543210"
+  },
+  {
+    "id": 3,
+    "name": "Carlos Rodriguez",
+    "email": "carlos@example.com",
+    "location": "City C",
+    "mobile": "5555555555"
+  },
+  {
+    "id": 4,
+    "name": "Anna Lopez",
+    "email": "anna@example.com",
+    "location": "City D",
+    "mobile": "9999999999"
+  }
+]
