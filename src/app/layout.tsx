@@ -6,7 +6,7 @@ import Link from "next/link";
 
 import "../globals.css";
 import { Suspense } from "react";
-import { Center } from "@/ui";
+import { Container } from "@/ui";
 
 interface IProps {
   children: React.ReactNode;
@@ -40,9 +40,9 @@ export default function RootLayout({ children }: IProps) {
           <ModalLayout>
             <Suspense
               fallback={
-                <Center>
+                <Container>
                   <p>Loading...</p>
-                </Center>
+                </Container>
               }
             >
               {children}

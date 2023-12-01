@@ -1,11 +1,11 @@
-import { Center } from "@/ui";
+import { Container } from "@/ui";
 
 export default function Home() {
   return (
-    <Center>
+    <Container isCentered>
       <h1 className="text-3xl font-bold">
         🪟 Modal Windows System Demo
       </h1>
-    </Center>
+    </Container>
   );
 }

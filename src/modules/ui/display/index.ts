@@ -1,1 +1,1 @@
-export { default as Center } from './Center.display';
+export { default as Container } from './Container.display';

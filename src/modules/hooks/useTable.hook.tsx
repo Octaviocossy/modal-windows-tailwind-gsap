@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import * as TanstackTable from "@tanstack/react-table";
 import * as Icon from "lucide-react";
 import { cn } from "@/utilities";
@@ -13,7 +13,7 @@ interface ITableProps {
 
 const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<T>[]) => {
   const Table: React.FC<ITableProps> = (props) => {
-    const [{ pageIndex, pageSize }, setPagination] = useState<TanstackTable.PaginationState>({pageIndex: 0, pageSize: 5 });
+    const [{ pageIndex, pageSize }, setPagination] = useState<TanstackTable.PaginationState>({ pageIndex: 0, pageSize: 5 });
 
     const pagination = useMemo(() => ({ pageIndex, pageSize }), [pageIndex, pageSize]);
 
@@ -127,7 +127,8 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
     );
   };
 
-  return { Table };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return { Table: useCallback((props: ITableProps) => (<Table {...props} />), [data]) };
 };
 
 export default useTable;

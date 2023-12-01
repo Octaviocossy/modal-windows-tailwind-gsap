@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useModalProvider } from "@/context";
 import { Draggable } from "gsap/all";
 import * as Icon from "lucide-react";
@@ -30,11 +30,11 @@ const useModal = () => {
   const { modal } = state;
 
   const Modal = () => {
-    const modal_ref = React.useRef<HTMLDivElement | null>(null);
-    const modal_content = React.useRef<HTMLDivElement | null>(null);
-    const [isdraggable, setIsDraggable] = React.useState(true);
+    const modal_ref = useRef<HTMLDivElement | null>(null);
+    const modal_content = useRef<HTMLDivElement | null>(null);
+    const [isdraggable, setIsDraggable] = useState(true);
 
-    React.useEffect(() => {
+    useEffect(() => {
       gsap.registerPlugin(Draggable);
 
       const [dragg] = Draggable.create(modal_content.current, {
@@ -99,7 +99,7 @@ const useModal = () => {
     );
   };
 
-  const Bar = React.useCallback(() => {
+  const Bar = () => {
     return (
       <div className="absolute bottom-0 z-50 min-h-screen">
         <div className="bottom-[1rem] flex flex-wrap fixed">
@@ -117,9 +117,10 @@ const useModal = () => {
         </div>
       </div>
     );
-  }, [state.tabs]);
+  };
 
-  return { Modal, Bar } as const;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  return { Modal: useCallback(() => <Modal />, [state.modal]), Bar: useCallback(() => <Bar />, [state.tabs]) } as const;
 };
 
 export default useModal;

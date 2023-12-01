@@ -1,9 +1,9 @@
-import { Center } from "@/ui";
+import { Container } from "@/ui";
 
 export default function Operators() {
   return (
-    <Center>
+    <Container>
       <h1>Operators</h1>
-    </Center>
+    </Container>
   );
 }
