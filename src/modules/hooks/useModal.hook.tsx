@@ -8,21 +8,16 @@ import { gsap } from "gsap";
 import { cn } from "@/utilities";
 
 const sizes: { [key: string]: string } = {
-  xs: "min-w-[10rem] min-h-[10rem]",
-  sm: "min-w-[20rem] min-h-[20rem]",
-  md: "min-w-[30rem] min-h-[30rem]",
-  lg: "min-w-[40rem] min-h-[40rem]",
-  xl: "min-w-[50rem] min-h-[50rem]",
+  xs: "min-w-[10rem]",
+  sm: "min-w-[20rem]",
+  md: "min-w-[30rem]",
+  lg: "min-w-[40rem]",
+  xl: "min-w-[50rem]",
   full: "min-w-[100%] min-h-[100%]",
 };
 
-const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
-  ...props
-}) => (
-  <button
-    className="p-1 rounded-lg hover:bg-gray-50 transition-all"
-    {...props}
-  />
+const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ ...props }) => (
+  <button className="p-1 rounded-lg hover:bg-gray-50 transition-all" {...props} />
 );
 
 const useModal = () => {
