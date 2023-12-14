@@ -5,6 +5,8 @@ import { cn } from "@/utilities";
 
 interface ITableOptions {
   containerClassName?: string;
+  borders?: boolean;
+  size?: "sm";
 }
 
 interface ITableProps {
@@ -14,6 +16,8 @@ interface ITableProps {
 const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<T>[]) => {
   const Table: React.FC<ITableProps> = (props) => {
     const [{ pageIndex, pageSize }, setPagination] = useState<TanstackTable.PaginationState>({ pageIndex: 0, pageSize: 5 });
+
+    const { options } = props;
 
     const pagination = useMemo(() => ({ pageIndex, pageSize }), [pageIndex, pageSize]);
 
@@ -29,16 +33,21 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
     return (
       <div
         className={cn(
-          "border w-fit rounded-md",
+          { "border rounded-md": options?.borders ?? options?.borders },
           props.options?.containerClassName
         )}
       >
-        <table className={"table-auto"}>
+        <table className={"table-auto w-full"}>
           <thead>
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <th key={header.id} className="p-4">
+                  <th
+                    key={header.id}
+                    className={cn("p-4", {
+                      "p-2 text-sm": options?.size ?? options?.size === "sm",
+                    })}
+                  >
                     {header.isPlaceholder
                       ? null
                       : TanstackTable.flexRender(
@@ -55,7 +64,12 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
               table.getRowModel().rows.map((row) => (
                 <tr key={row.id} className="border-t border-b">
                   {row.getVisibleCells().map((cell) => (
-                    <td key={cell.id} className="p-4">
+                    <td
+                      key={cell.id}
+                      className={cn("p-4", {
+                        "p-2 text-sm": options?.size ?? options?.size === "sm",
+                      })}
+                    >
                       {TanstackTable.flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -68,7 +82,9 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
               <tr>
                 <td
                   colSpan={columns.length}
-                  className="text-center p-4 font-bold"
+                  className={cn("text-center font-bold p-4", {
+                    "p-2": options?.size ?? options?.size === "sm",
+                  })}
                 >
                   No records found.
                 </td>
@@ -81,7 +97,8 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
             <button
               className={cn(
                 "h-fit p-2 px-4 text-sm rounded-md hover:bg-gray-50 transition-colors border",
-                { "bg-gray-50": !table.getCanPreviousPage() }
+                { "bg-gray-50": !table.getCanPreviousPage() },
+                { "p-1 px-2": options?.size ?? options?.size === "sm" }
               )}
               disabled={!table.getCanPreviousPage()}
               onClick={() => table.setPageIndex(0)}
@@ -91,7 +108,8 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
             <button
               className={cn(
                 "h-fit p-2 px-4 text-sm rounded-md hover:bg-gray-50 transition-colors border",
-                { "bg-gray-50": !table.getCanPreviousPage() }
+                { "bg-gray-50": !table.getCanPreviousPage() },
+                { "p-1 px-2": options?.size ?? options?.size === "sm" }
               )}
               disabled={!table.getCanPreviousPage()}
               onClick={() => table.previousPage()}
@@ -104,7 +122,8 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
             <button
               className={cn(
                 "h-fit p-2 px-4 text-sm rounded-md hover:bg-gray-50 transition-colors border",
-                { "bg-gray-50": !table.getCanNextPage() }
+                { "bg-gray-50": !table.getCanNextPage() },
+                { "p-1 px-2": options?.size ?? options?.size === "sm" }
               )}
               disabled={!table.getCanNextPage()}
               onClick={() => table.nextPage()}
@@ -114,7 +133,8 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
             <button
               className={cn(
                 "h-fit p-2 px-4 text-sm rounded-md hover:bg-gray-50 transition-colors border ",
-                { "bg-gray-50": !table.getCanNextPage() }
+                { "bg-gray-50": !table.getCanNextPage() },
+                { "p-1 px-2": options?.size ?? options?.size === "sm" }
               )}
               disabled={!table.getCanNextPage()}
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
@@ -128,7 +148,7 @@ const useTable = <T extends Object>(data: T[], columns: TanstackTable.ColumnDef<
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return { Table: useCallback((props: ITableProps) => (<Table {...props} />), [data]) };
+  return { Table: useCallback((props: ITableProps) => <Table {...props} />, [data]) };
 };
 
 export default useTable;

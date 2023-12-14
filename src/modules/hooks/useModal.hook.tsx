@@ -83,7 +83,7 @@ const useModal = () => {
               </div>
             </div>
             <div
-              className="flex justify-center items-center cursor-default h-full"
+              className="flex cursor-default h-full"
               onMouseOver={() => setIsDraggable(false)}
             >
               {modal.component}

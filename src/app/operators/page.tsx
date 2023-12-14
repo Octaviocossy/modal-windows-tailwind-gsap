@@ -1,9 +1,14 @@
+import { EResult, IOperator } from "@/models";
+import { OperatorsTable } from "@/screens";
 import { Container } from "@/ui";
+import { api } from "@/services";
 
-export default function Operators() {
+export default async function Products() {
+  const { type, value } = await api.get<IOperator[]>("/operators");
+
   return (
     <Container>
-      <h1>Operators</h1>
+      {type === EResult.SUCCESS && <OperatorsTable operators={value} />}
     </Container>
   );
 }

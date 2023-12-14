@@ -5,4 +5,5 @@ export interface IProduct {
   price: number;
   operator_name?: string;
   operator_id?: number;
+  products?: IProduct[];
 }

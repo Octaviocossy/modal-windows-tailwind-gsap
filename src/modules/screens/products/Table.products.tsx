@@ -1,35 +1,15 @@
 "use client";
 
-import { ProductModalContent } from "./ModalContent.products";
-import { EResult, IProduct } from "@/models";
-import { useModalProvider } from "@/context";
 import { ColumnDef } from "@tanstack/react-table";
-import { useTable } from "@/hooks";
-import { api } from "@/services";
+import { useProducts, useTable } from "@/hooks";
+import {  IProduct } from "@/models";
 
 interface IProps {
   products: IProduct[];
 }
 
 export function ProductsTable({ products }: IProps) {
-  const { actions } = useModalProvider();
-
-  const handleCreateProductModal = async (id: IProduct["id"]) => {
-    const { type, value } = await api.get<IProduct>(`/api/products/${id}`);
-
-    if (type === EResult.ERROR) return;
-
-    actions.onCreate({
-      minimizedTitle: `Product #${value.id}`,
-      isDraggeable: true,
-      handleOpen: handleCreateProductModal,
-      component: (<ProductModalContent product={value} />),
-      isOpen: true,
-      title: `Product #${value.id}`,
-      size: "md",
-      id: value.id,
-    });
-  };
+  const { handleCreateProductModal } = useProducts();
 
   const COLUMNS: ColumnDef<IProduct>[] = [
     {
@@ -37,7 +17,7 @@ export function ProductsTable({ products }: IProps) {
       accessorKey: "id",
       cell: (props) => (
         <>
-          <span className="text-blue-700">#</span>
+          <span className="text-orange-700">#</span>
           {props.getValue()}
         </>
       ),
@@ -55,7 +35,7 @@ export function ProductsTable({ products }: IProps) {
         return (
           <button
             onClick={() => handleCreateProductModal(product.id)}
-            className="p-2 px-4 text-blue-700 hover:bg-blue-500/20 transition-colors bg-blue-500/10 rounded-lg"
+            className="p-2 px-4 text-orange-700 hover:bg-orange-500/20 transition-colors bg-orange-500/10 rounded-lg"
           >
             Details
           </button>
@@ -66,5 +46,5 @@ export function ProductsTable({ products }: IProps) {
 
   const { Table } = useTable(products, COLUMNS);
 
-  return <Table />;
+  return <Table options={{ borders: true }} />;
 }
