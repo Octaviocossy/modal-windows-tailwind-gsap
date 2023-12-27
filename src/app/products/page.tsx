@@ -4,7 +4,7 @@ import { Container } from "@/ui";
 import { api } from "@/services";
 
 export default async function Products() {
-  const { type, value } = await api.get<IProduct[]>("/products");
+  const { type, value } = await api.get<IProduct[]>("/api/products");
 
   return (
     <Container>
