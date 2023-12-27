@@ -33,7 +33,7 @@ export function ModalLayout({ children }: IProps) {
 }
 ```
 
-## CRUD 📦
+## Create and minimize windows 📦
 The modal Context provides us with 4 functions, onCreate, onClose, onMinimize and onResize, of which the most used will be onCreate and onMinimize, we don't have to worry about the others.
 
 ### onCreate 📦
