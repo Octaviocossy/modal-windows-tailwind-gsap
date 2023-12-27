@@ -23,7 +23,7 @@ const useProducts = () => {
     });
   };
 
-  return { handleCreateProductModal } as const;
+  return { handleCreateProductModal };
 };
 
 export default useProducts;

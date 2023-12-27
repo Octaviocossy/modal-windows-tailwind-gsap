@@ -23,7 +23,7 @@ const useOperators = () => {
     });
   };
 
-  return { handleCreateOperatorModal } as const;
+  return { handleCreateOperatorModal };
 };
 
 export default useOperators;
