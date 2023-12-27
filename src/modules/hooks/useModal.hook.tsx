@@ -17,7 +17,7 @@ const sizes: { [key: string]: string } = {
 };
 
 const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({ ...props }) => (
-  <button className="p-1 rounded-lg hover:bg-gray-50 transition-all" {...props} />
+  <button className={cn("p-1 rounded-lg hover:bg-gray-100 transition-all", {"bg-gray-100": props.disabled})} {...props} />
 );
 
 const useModal = () => {
@@ -104,7 +104,7 @@ const useModal = () => {
               className="items-center bg-white border flex m-[1rem] p-[0.5rem] rounded-lg shadow-sm"
             >
               <p className="w-[13rem]">{tab.title}</p>
-              <Button onClick={() => tab.handleOpen(tab.id)}>
+              <Button onClick={() => tab.handleOpen(tab.id)} disabled={modal !== null}>
                 <Icon.Maximize2 className="h-[1rem] w-[1rem]" />
               </Button>
             </div>
@@ -115,7 +115,7 @@ const useModal = () => {
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  return { Modal: useCallback(() => <Modal />, [state.modal]), Bar: useCallback(() => <Bar />, [state.tabs]) } as const;
+  return { Modal: useCallback(() => <Modal />, [state.modal]), Bar: useCallback(() => <Bar />, [state.tabs, state.modal]) } as const;
 };
 
 export default useModal;
